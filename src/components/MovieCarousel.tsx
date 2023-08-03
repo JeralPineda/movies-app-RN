@@ -6,18 +6,19 @@ import {Movie} from "../interfaces/movie";
 import {MoviePoster} from "./MoviePoster";
 
 interface MovieCarouselProps {
-  data: Movie[];
+  movies: Movie[];
 }
 
-export const MovieCarousel = ({data}: MovieCarouselProps) => {
+export const MovieCarousel = ({movies}: MovieCarouselProps) => {
   const {width: SCREEN_WIDTH} = Dimensions.get("window");
   return (
     <View style={styles.container}>
       <Carousel
-        data={data}
+        data={movies}
         renderItem={({item}: any) => <MoviePoster movie={item} />}
         sliderWidth={SCREEN_WIDTH}
         itemWidth={300}
+        inactiveSlideOpacity={0.8}
       />
     </View>
   );

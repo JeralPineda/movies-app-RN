@@ -1,9 +1,9 @@
 import React from "react";
-import {View, ActivityIndicator} from "react-native";
+import {View, ActivityIndicator, ScrollView} from "react-native";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 
 import {useMovies} from "../hooks";
-import {MovieCarousel} from "../components";
+import {MovieCarousel, HorizontalSlider} from "../components";
 
 export const HomeScreen = () => {
   const {moviesInTheaters, isLoading} = useMovies();
@@ -19,8 +19,17 @@ export const HomeScreen = () => {
   }
 
   return (
-    <View style={{marginTop: top + 20}}>
-      <MovieCarousel data={moviesInTheaters} />
-    </View>
+    <ScrollView>
+      <View style={{marginTop: top + 20}}>
+        {/* Películas en cine*/}
+        <MovieCarousel movies={moviesInTheaters} />
+
+        {/* Películas populares */}
+        <HorizontalSlider
+          movies={moviesInTheaters}
+          title="Películas Populares"
+        />
+      </View>
+    </ScrollView>
   );
 };
