@@ -1,6 +1,6 @@
 import React from "react";
 import {createStackNavigator} from "@react-navigation/stack";
-import {DetailScree, HomeScree} from "../screens";
+import {DetailScreen, HomeScreen} from "../screens";
 
 const Stack = createStackNavigator();
 
@@ -16,8 +16,8 @@ export const Navigation = () => {
           backgroundColor: "white",
         },
       }}>
-      <Stack.Screen name="HomeScreen" component={HomeScree} />
-      <Stack.Screen name="DetailScree" component={DetailScree} />
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="DetailScreen" component={DetailScreen} />
     </Stack.Navigator>
   );
 };
