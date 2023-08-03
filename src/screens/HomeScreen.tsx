@@ -1,21 +1,18 @@
-import React from "react";
-// import {useNavigation} from "@react-navigation/native";
-import {Button, Text, View} from "react-native";
-import {StackScreenProps} from "@react-navigation/stack";
+import React, {useEffect} from "react";
+import {Text, View} from "react-native";
+import movieDB from "../api/movieDB";
 
-interface Pagina1ScreenProps extends StackScreenProps<any, any> {}
-
-export const HomeScreen = ({navigation}: Pagina1ScreenProps) => {
-  // const navigation = useNavigation();
+export const HomeScreen = () => {
+  useEffect(() => {
+    (async () => {
+      const {data} = await movieDB.get("/now_playing");
+      console.log(JSON.stringify(data.results[0], null, 3));
+    })();
+  }, []);
 
   return (
     <View>
       <Text>HomeScreen</Text>
-
-      <Button
-        title="Ir a DetailScreen"
-        onPress={() => navigation.navigate("DetailScreen")}
-      />
     </View>
   );
 };
