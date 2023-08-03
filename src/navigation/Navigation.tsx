@@ -8,6 +8,7 @@ export const Navigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{
+        headerShown: false,
         headerStyle: {
           elevation: 0,
           shadowColor: "transparent", //IOS
