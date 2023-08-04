@@ -1,6 +1,7 @@
 import React from "react";
 import {Text, View, FlatList} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import currencyFormatter from "currency-formatter";
 
 import {MovieFull} from "../interfaces/movie";
 import {Cast} from "../interfaces/credits";
@@ -37,7 +38,9 @@ export const MovieDetails = ({cast, movieFull}: MovieDetailsProps) => {
         <Text style={{fontSize: 23, marginTop: 10, fontWeight: "bold"}}>
           Presupuesto
         </Text>
-        <Text style={{fontSize: 18}}>{movieFull.budget}</Text>
+        <Text style={{fontSize: 18}}>
+          {currencyFormatter.format(movieFull.budget, {code: "USD"})}
+        </Text>
       </View>
 
       {/* Casting */}
