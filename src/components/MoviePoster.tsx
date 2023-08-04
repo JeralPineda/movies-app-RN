@@ -1,12 +1,18 @@
 import React from "react";
-import {View, Image, StyleSheet, ViewStyle} from "react-native";
+import {Image, StyleSheet, ViewStyle, TouchableOpacity} from "react-native";
 import {Movie} from "../interfaces/movie";
+import {useNavigation} from "@react-navigation/native";
+import {StackNavigationProp} from "@react-navigation/stack";
 
 interface MoviePosterProps {
   movie: Movie;
   height?: number;
   width?: number;
 }
+
+export type RootStackParamList = {
+  DetailScreen: Movie;
+};
 
 export const MoviePoster = ({
   movie,
@@ -15,10 +21,15 @@ export const MoviePoster = ({
 }: MoviePosterProps) => {
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
   return (
-    <View style={styles.container(height, width)}>
+    <TouchableOpacity
+      style={styles.container(height, width)}
+      activeOpacity={0.8}
+      onPress={() => navigation.navigate("DetailScreen", movie)}>
       <Image source={{uri}} style={styles.image as any} />
-    </View>
+    </TouchableOpacity>
   );
 };
 
