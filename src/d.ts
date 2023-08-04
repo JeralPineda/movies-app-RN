@@ -1,6 +1,8 @@
 import "react-native";
 import {ImageStyle, TextStyle, ViewStyle} from "react-native";
 
+//Archivo de configuración para aceptar props en StyleSheet
+
 declare module "react-native" {
   namespace StyleSheet {
     type Style = ViewStyle | TextStyle | ImageStyle;
