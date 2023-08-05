@@ -1,3 +1,4 @@
+export {GradientBackground} from "./GradientBackground";
 export {HorizontalSlider} from "./HorizontalSlider";
 export {MovieCarousel} from "./MovieCarousel";
 export {MovieDetails} from "./MovieDetails";
