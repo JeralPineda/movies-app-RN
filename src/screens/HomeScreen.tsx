@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {View, ActivityIndicator, ScrollView, StyleSheet} from "react-native";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 
@@ -9,21 +9,22 @@ import {
   GradientBackground,
 } from "../components";
 import {generateUri, getImageColors} from "../helpers";
+import {GradientContext} from "../context/GradientContext";
 // import {useImageColors} from "../hooks/useImageColors";
 
 export const HomeScreen = () => {
-  const {nowPlaying, popular, topRated, upcoming, isLoading} = useMovies();
-  // useImageColors();
-
   const {top} = useSafeAreaInsets();
+  const {nowPlaying, popular, topRated, upcoming, isLoading} = useMovies();
+  const {setMainColors} = useContext(GradientContext);
+  // useImageColors();
 
   const getPosterColors = async (index: number) => {
     const movie = nowPlaying[index];
     const uri = generateUri(movie.poster_path);
 
-    const [primary, secondary] = await getImageColors(uri);
+    const [primary = "green", secondary = "blue"] = await getImageColors(uri);
 
-    console.log({primary, secondary});
+    setMainColors({primary, secondary});
   };
 
   if (isLoading) {
