@@ -8,8 +8,7 @@ import {
   HorizontalSlider,
   GradientBackground,
 } from "../components";
-import {generateUri} from "../helpers";
-import ImageColors from "react-native-image-colors";
+import {generateUri, getImageColors} from "../helpers";
 // import {useImageColors} from "../hooks/useImageColors";
 
 export const HomeScreen = () => {
@@ -22,11 +21,9 @@ export const HomeScreen = () => {
     const movie = nowPlaying[index];
     const uri = generateUri(movie.poster_path);
 
-    const c = await ImageColors.getColors(uri, {});
-    console.log(c);
+    const [primary, secondary] = await getImageColors(uri);
 
-    // const colors = await getColors(uri, {});
-    // console.log(colors);
+    console.log({primary, secondary});
   };
 
   if (isLoading) {
