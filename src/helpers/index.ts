@@ -1,0 +1,1 @@
+export { generateUri } from "./generateUri";

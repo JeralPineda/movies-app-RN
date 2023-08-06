@@ -7,10 +7,15 @@ import {MoviePoster} from "./MoviePoster";
 
 interface MovieCarouselProps {
   movies: Movie[];
+  getPosterColors: (value: number) => void;
 }
 
-export const MovieCarousel = ({movies}: MovieCarouselProps) => {
+export const MovieCarousel = ({
+  movies,
+  getPosterColors,
+}: MovieCarouselProps) => {
   const {width: SCREEN_WIDTH} = Dimensions.get("window");
+
   return (
     <View style={styles.container}>
       <Carousel
@@ -19,6 +24,7 @@ export const MovieCarousel = ({movies}: MovieCarouselProps) => {
         sliderWidth={SCREEN_WIDTH}
         itemWidth={300}
         inactiveSlideOpacity={0.8}
+        onSnapToItem={index => getPosterColors(index)}
       />
     </View>
   );
