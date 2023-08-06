@@ -1,13 +1,14 @@
 import React from "react";
 import {Image, Text, View, StyleSheet} from "react-native";
 import {Cast} from "../interfaces/credits";
+import {generateUri} from "../helpers";
 
 interface Props {
   actor: Cast;
 }
 
 export const CastItem = ({actor}: Props) => {
-  const uri = `https://image.tmdb.org/t/p/w500${actor.profile_path}`;
+  const uri = generateUri(actor.profile_path!);
 
   return (
     <View style={styles.container}>

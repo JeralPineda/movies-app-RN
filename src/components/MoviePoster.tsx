@@ -3,6 +3,7 @@ import {Image, StyleSheet, ViewStyle, TouchableOpacity} from "react-native";
 import {Movie} from "../interfaces/movie";
 import {useNavigation} from "@react-navigation/native";
 import {StackNavigationProp} from "@react-navigation/stack";
+import {generateUri} from "../helpers";
 
 interface MoviePosterProps {
   movie: Movie;
@@ -19,7 +20,7 @@ export const MoviePoster = ({
   height = 420,
   width = 300,
 }: MoviePosterProps) => {
-  const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const uri = generateUri(movie.poster_path);
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
